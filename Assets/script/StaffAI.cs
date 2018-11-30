@@ -70,7 +70,6 @@ public class StaffAI : MonoBehaviour {
 	void AImove (){
 			move = new Vector2 ((range) * Time.deltaTime, (range2) * Time.deltaTime);
 			transform.Translate (move);
-
 	}
 
 	void OnMouseDown(){

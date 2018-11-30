@@ -10,20 +10,27 @@ public class GM : MonoBehaviour
 
     public int workmoney = 0;
 
-    public GameObject winUI;
-    public GameObject loseUI;
+    public GameObject outcomeUI;
     public GameObject menuUI;
+
+    public GameObject outcomeanimation;
+    public GameObject nextlevel;
     public TextMeshProUGUI workmoney_text;
+    
 
     public List<GameObject> table;
     public List<GameObject> ITDog;
 
-
+    public int workermoney = 1;
     public int outcome = 20;
     public float outcometimer = 0;
     public int maxoutcomtime = 5;
 
     bool gameEnd = false;
+
+    public int maxgoal = 1000;
+
+    public int highermoney = 0;
 
     public void Update()
     {
@@ -32,6 +39,9 @@ public class GM : MonoBehaviour
         {
             outcometimer =0;
             Removemoney(outcome);
+            outcomeanimation.SetActive(true);
+            outcomeanimation.GetComponent<TextMeshProUGUI>().text = "(-$" + outcome + ")";
+            outcomeanimation.GetComponent<Animation>().Play();
         }
     }
 
@@ -45,11 +55,14 @@ public class GM : MonoBehaviour
     public void Updatemoney(int i)
     {
         workmoney += i;
+        if(workmoney > highermoney)
+        {
+            highermoney = workmoney;
+        }
         UpdateUI();
 
-        if(workmoney >= 1000){
-            workmoney_text.gameObject.SetActive(false);
-            winUI.SetActive(true);
+        if(workmoney >= maxgoal){
+            Nextstage();
         }
     }
 
@@ -60,7 +73,8 @@ public class GM : MonoBehaviour
 
     private void UpdateUI()
     {
-        workmoney_text.text = "working  =   $" + workmoney;
+        workmoney_text.text = "working = $" + workmoney;
+
     }
 
     public void Checktable(GameObject T, GameObject staff)
@@ -102,20 +116,18 @@ public class GM : MonoBehaviour
 
 
 
-    public void YouWin()
+    public void Endgame()
     {
         gameEnd = true;
-        winUI.SetActive(true);
     }
 
-    public void YouLose()
-    {
-        gameEnd = true;
-        loseUI.SetActive(true);
-    }
 
     public void Nextstage(){
-
+        maxgoal += 1500;
+        outcome *= 2;
+        nextlevel.SetActive(true);
+        nextlevel.GetComponent<Animation>().Play();
+        outcomeUI.GetComponent<TextMeshProUGUI>().text = "Outcome:" + outcome + "$(sec)";
     }
 
     public void Restart(){
@@ -127,6 +139,8 @@ public class GM : MonoBehaviour
         if (Time.timeScale != 0)
         {
             menuUI.SetActive(true);
+            menuUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "goal money:$"+maxgoal;
+            menuUI.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "worker =" + workermoney+"($)";
             Time.timeScale = 0;
         }
         else

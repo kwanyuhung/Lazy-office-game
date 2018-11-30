@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{9F94E66D-0073-06B6-1765-F37AFFF31CA8}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/StaffAI.cs">
+    <Files>
+      <File FileName="Assets/GM.cs" Line="56" Column="10" />
+      <File FileName="Assets/script/StaffAI.cs" Line="50" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
