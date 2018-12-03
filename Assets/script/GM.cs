@@ -10,6 +10,7 @@ public class GM : MonoBehaviour
 
     public int workmoney = 0;
 
+    public GameObject PauseUI;
     public GameObject worker;
 
     public GameObject outcomeUI;
@@ -31,14 +32,15 @@ public class GM : MonoBehaviour
     public int tablecount = 1;
 
     public int workermoney = 1;
-    public int outcome = 20;
+    public int outcome = 50;
     public float outcometimer = 0;
     public int maxoutcomtime = 5;
 
     bool gameEnd = false;
 
+
     
-    public int maxgoal = 1000;
+    public int maxgoal = 1;
     public float goaltimer = 0;
     public int maxgoaltime = 15;
 
@@ -171,13 +173,15 @@ public class GM : MonoBehaviour
 
 
     public void Endgame()
-    {
+    { 
         gameEnd = true;
+        PauseUI.SetActive(false);
         gameEndUI.SetActive(true);
         gameEndUI.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Your max Score:" + highermoney;
         SaveRecord(highermoney);
 
-        for(int i = 0;i < ScoreBoard.Length; i++)
+        Socrelist.text = "";
+        for (int i = 0;i < ScoreBoard.Length; i++)
         {
             Socrelist.text += (i + 1) + ")  " + ScoreBoard[i] +"\n";
         }
@@ -188,8 +192,8 @@ public class GM : MonoBehaviour
 
     public void Nextstage()
     {
-        maxgoal *= 2;
-        outcome *= 2;
+        maxgoal += 1;
+        outcome += outcome;
         nextlevel.SetActive(true);
         nextlevel.GetComponent<Animation>().Play();
         outcomeUI.GetComponent<TextMeshProUGUI>().text = "Outcome:" + outcome + "$(5sec)";
