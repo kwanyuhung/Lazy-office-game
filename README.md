@@ -6,7 +6,7 @@ You can download APK from [here] https://drive.google.com/file/d/17w4Mnwiv9xRIoD
 
 # 1. Game Idea
 
-the idea comes from some big IT company, and has excellent Work benefits, like playing games at work, or taking a nap.*
+the idea comes from some big IT company, and has excellent Work benefits, like playing games at work, or taking a nap, some of them will become lazy.*
 so if I am a manager, I need to supervise their work, to let them earn more money.
 (* this is because, at that time, I am a student, sorry about that and the older me! but it,s a fun idea to make this game)
 
